@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="com.msg_gRPC.grpc";
+
+package gRPC;
+
+service ServiceMessagerie {
+  rpc EnvoyerMessage (Message) returns (Confirmation);
+  rpc RecupererMessages (Utilisateur) returns (ListeMessages);
+}
+
+message Message {
+  string expediteur = 1;
+  string destinataire = 2;
+  string contenu = 3;
+}
+
+message Confirmation {
+  bool reussite = 1;
+  string message_erreur = 2;
+}
+
+message Utilisateur {
+  string nom_utilisateur = 1;
+}
+
+message ListeMessages {
+  repeated Message messages = 1;
+}
